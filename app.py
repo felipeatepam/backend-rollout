@@ -1,8 +1,11 @@
 """Example of fastapi main file."""
+
+import os
 from typing import Union
 
 from fastapi import FastAPI
 
+host = os.getenv("HOSTNAME", "unknown")
 app = FastAPI()
 
 
@@ -10,6 +13,12 @@ app = FastAPI()
 def read_root():
     """Returns Hello World."""
     return {"Hello": "World"}
+
+
+@app.get("/api/hello")
+def hello():
+    """Returns Kubernetes World."""
+    return {f"Hello, KubeRocketCI from {host}"}
 
 
 @app.get("/items/{item_id}")
