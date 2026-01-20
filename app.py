@@ -18,7 +18,7 @@ def read_root():
 @app.get("/api/hello")
 def hello():
     """Returns Kubernetes World."""
-    return {f"Hello, KubeRocketCI from {host}"}
+    return f"Hello, KubeRocketCI from {host}"
 
 
 @app.get("/items/{item_id}")
